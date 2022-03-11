@@ -145,7 +145,6 @@ function wagesEarnedOnDate(employee, givenDate){
        
     }
     
-    
     let hoursWorked = hoursWorkedOnDate.toString()
     let hours = parseInt(hoursWorked.replace("00", ""))
    
@@ -161,11 +160,22 @@ function wagesEarnedOnDate(employee, givenDate){
 // MAKE UNIVERSAL - FOR MORE TEST OPTIONS
 
 function allWagesFor(employee){
-    // console.log(employee)    
+    // console.log(employee)
+    employee.timeInEvents.map(function (element){
+        console.log(element.date)
+        
+    })    
+    employee.timeOutEvents.map(function (element){
+        console.log(element.date)
+        
+    }) 
+    
+    // console.log(mapping)
     // console.log(employee.timeOutEvents[0].date)
     // console.log(employee.timeInEvents[0].date)
     // console.log(employee.timeOutEvents[1].date)
     // console.log(employee.timeInEvents[1].date)
+
     let allWages
     let allWages1
     let dayWorkedIn
@@ -190,6 +200,7 @@ function allWagesFor(employee){
     // console.log(dayWorkedOut.date)
     // console.log(dayWorkedIn.hour)
     // console.log(dayWorkedOut.hour)
+    // wagesEarnedOnDate(employee, dayWorkedIn.date, )
     if(dayWorkedIn.date === dayWorkedOut.date){
         allWork = dayWorkedOut.hour - dayWorkedIn.hour
 
@@ -238,58 +249,108 @@ function calculatePayroll(array){
     let workPay
     let workPay1
 
-  
-    
-
+    let totalPay = 0
+    let element1
+    let element2
+    let dayOfWorkIn
+    let dayOfWorkOut
     // console.log(array)
-    array.forEach(element => {
-        // console.log(element)
-        // console.log(element.timeInEvents)        
+    array.forEach(employee => {
+        // console.log(employee)
+        // console.log(element.timeInEvents)  
         // console.log(element.timeOutEvents)
-
-        for (let i = 0; i < element.timeInEvents.length - 1; i++) {
-            workIn = element.timeInEvents[i]
-        }
-        for (let i = 0; i < element.timeOutEvents.length - 1 ; i++) {
-            workOut = element.timeOutEvents[i]
-        }
-        // console.log(workIn)
-        // console.log(workOut)
-        // console.log(workIn.date)
-        // console.log(workOut.date)
-        if(workIn.date === workOut.date){
-            workPay = workOut.hour - workIn.hour
-
-        }
-        // console.log(workPay)
-
-
-        for (let i = 0; i < element.timeInEvents.length; i++) {
-            workIn1 = element.timeInEvents[i]
-        }
-        for (let i = 0; i < element.timeOutEvents.length; i++) {
-            workOut1 = element.timeOutEvents[i]
-        }
-
-        if(workIn1.date === workOut1.date){
-            workPay1 = workOut1.hour - workIn1.hour
-
-        }
+        totalPay += allWagesFor(employee)        
         
 
-        // console.log(workPay)
-        // console.log(workPay1)
-        let allPay = workPay + workPay1
-        // console.log(allPay)
+        
+        // console.log(employee.timeInEvents)
+        // console.log(employee.timeOutEvents)
 
-        let allPay1 = allPay.toString()
-        allPay1 = parseInt(allPay1.replace("00", ""))
-        allPay1 = allPay1 * 110
-        allPay1 = allPay1.toString()
-        console.log(allPay1)
-        //DIFINITELY THE WRONG WAY
+
+        for (let index = 0; index < employee.timeInEvents.length; index++) {
+            element1 = employee.timeInEvents[index]
+            // console.log(element1)
+
+            // dayOfWorkIn = element.date            
+            // console.log(dayOfWorkIn)
+
+
+        }
+
+        for (let index = 0; index < employee.timeOutEvents.length; index++) {
+            element2 = employee.timeOutEvents[index]            
+            // console.log(element2)
+
+
+            // dayOfWorkOut = element.date            
+            // console.log(dayOfWorkOut) 
+
+
+        }
+
+        // console.log(element1.date)
+        // console.log(element2.date)
+        // if(element1.date === element2.date)(
+
+        // )
+
+
+
+
+        
+        
+
+
+        // for (let i = 0; i < element.timeInEvents.length - 1; i++) {
+        //     workIn = element.timeInEvents[i]
+            
+        // }            
+
+        // // console.log(workIn.date)
+        // // console.log(wagesEarnedOnDate(element, workIn.date))
+
+        // for (let i = 0; i < element.timeOutEvents.length - 1 ; i++) {
+        //     workOut = element.timeOutEvents[i]
+        // }
+        // // console.log(workIn)
+        // // console.log(workOut)
+        // // console.log(workIn.date)
+        // // console.log(workOut.date)
+        // if(workIn.date === workOut.date){
+        //     workPay = workOut.hour - workIn.hour
+
+        // }
+        // // console.log(workPay)
+
+
+        // for (let i = 0; i < element.timeInEvents.length; i++) {
+        //     workIn1 = element.timeInEvents[i]
+        // }
+        // for (let i = 0; i < element.timeOutEvents.length; i++) {
+        //     workOut1 = element.timeOutEvents[i]
+        // }
+
+        // if(workIn1.date === workOut1.date){
+        //     workPay1 = workOut1.hour - workIn1.hour
+
+        // }
+        
+
+        // // console.log(workPay)
+        // // console.log(workPay1)
+        // let allPay = workPay + workPay1
+        // // console.log(allPay)
+
+        // let allPay1 = allPay.toString()
+        // allPay1 = parseInt(allPay1.replace("00", ""))
+        // allPay1 = allPay1 * 110
+        // allPay1 = allPay1.toString()
+        // // console.log(allPay1)
+        // //DIFINITELY THE WRONG WAY
 
     })
+    // console.log(totalPay)
+    // return totalPay
 
 }
 
